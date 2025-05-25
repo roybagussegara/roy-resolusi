@@ -1,0 +1,11 @@
+# File: ai_dasar/chatbot_dasar.py
+
+from transformers import pipeline, Conversation
+
+# Inisialisasi model
+chatbot = pipeline("conversational", model="microsoft/DialoGPT-small")
+
+def jalankan_chatbot_dasar(teks, percakapan):
+    percakapan.add_user_input(teks)
+    hasil = chatbot(percakapan)
+    return hasil.generated_responses[-1]
